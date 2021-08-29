@@ -11,7 +11,7 @@ int main()
     for(int i=0 ; i<n ; ++i)
         scanf("%d",&arr[i]);
     int pid=fork();
-    if(pid==0)
+    if(pid==0) //child calculates sum of even
     {
         int sum=0;
         for(int i=0 ; i<n ; ++i)
@@ -19,7 +19,7 @@ int main()
                 sum+=arr[i];
         printf("Sum of even = %d\n",sum);
     }
-    else
+    else if(pid>0) //parent calculates sum of odd
     {
         int sum=0;
         for(int i=0 ; i<n ; ++i)
@@ -27,5 +27,7 @@ int main()
                 sum+=arr[i];
         printf("Sum of odd = %d\n",sum);
     }
+    else
+        printf("No child process created");
     return 0;
 }
